@@ -1,21 +1,24 @@
 Dim Number As Boolean
 Dim Phonetic As Boolean
-Const SizeMax As Integer = 18
-Const SizeMin As Integer = 6
+'//Const SizeMax As Integer = 18
+'//Const SizeMin As Integer = 6
 Dim Name As String
 Dim FontType As String
 Dim FontSize2 As Integer
 Dim FontSize1 As Integer
 
-Private Sub TextBox2_Change()
-
-End Sub
-
 Private Sub UserForm_Initialize()
 '//フォントサイズの初期化
 FontSize2 = 12
 FontSize1 = 12
+'//If OptionButton1.Value = True Then
+   '// N = InStr(ActiveCell, vbLf)
+   '// ActiveCell.Characters(Length:=N).Font.Size = FontSize2
+'//End If
 
+'//N = InStr(ActiveCell, vbLf)
+'//ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
+ActiveCell.Font.Size = 12
 End Sub
 
 Private Sub CheckBox1_Click()
@@ -138,6 +141,7 @@ If OptionButton1.Value = True Then
 
     If FontSize2 < 6 Then '//=
         FontSize2 = 6
+        ActiveCell.Characters(Length:=N).Font.Size = FontSize2
         TextBox2.Value = FontSize2
         MsgBox "これ以上小さくできません"
         Exit Sub
@@ -158,6 +162,7 @@ If OptionButton1.Value = True Then
 
     If FontSize2 > 18 Then '//=
         FontSize2 = 18
+        ActiveCell.Characters(Length:=N).Font.Size = FontSize2
         TextBox2.Value = FontSize2
         MsgBox "これ以上大きくできません"
         Exit Sub
@@ -178,6 +183,7 @@ ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1 '//SpinButton1.Value, 
 TextBox1.Value = FontSize1 '// SpinButton1.Value
 If FontSize1 < 6 Then '// =
     FontSize1 = 6
+    ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
     TextBox1.Value = FontSize1
     MsgBox "これ以上小さくできません"
     Exit Sub
@@ -196,8 +202,11 @@ TextBox1.Value = FontSize1 '//SpinButton1.Value
 
 If FontSize1 > 18 Then '//=
     FontSize1 = 18
+    ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
     TextBox1.Value = FontSize1
     MsgBox "これ以上大きくできません"
     Exit Sub
 End If
 End Sub
+
+
