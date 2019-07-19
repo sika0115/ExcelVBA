@@ -1,9 +1,4 @@
-Dim Number As Boolean
-Dim Phonetic As Boolean
-'//Const SizeMax As Integer = 18
-'//Const SizeMin As Integer = 6
 Dim Name As String
-Dim FontType As String
 Dim FontSize2 As Integer
 Dim FontSize1 As Integer
 
@@ -11,14 +6,8 @@ Private Sub UserForm_Initialize()
 '//フォントサイズの初期化
 FontSize2 = 12
 FontSize1 = 12
-'//If OptionButton1.Value = True Then
-   '// N = InStr(ActiveCell, vbLf)
-   '// ActiveCell.Characters(Length:=N).Font.Size = FontSize2
-'//End If
-
-'//N = InStr(ActiveCell, vbLf)
-'//ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
 ActiveCell.Font.Size = 12
+Worksheets("座席").Cells.Font.Name = "MS 明朝"
 End Sub
 
 Private Sub CheckBox1_Click()
@@ -136,10 +125,10 @@ If OptionButton1.Value = True Then
 
     N = InStr(ActiveCell, vbLf)
 
-    ActiveCell.Characters(Length:=N).Font.Size = FontSize2  '//SpinButton2.Value　先頭から改行までの文字
-    TextBox2.Value = FontSize2 '//SpinButton2.Value
+    ActiveCell.Characters(Length:=N).Font.Size = FontSize2
+    TextBox2.Value = FontSize2
 
-    If FontSize2 < 6 Then '//=
+    If FontSize2 < 6 Then
         FontSize2 = 6
         ActiveCell.Characters(Length:=N).Font.Size = FontSize2
         TextBox2.Value = FontSize2
@@ -157,10 +146,10 @@ If OptionButton1.Value = True Then
 
     N = InStr(ActiveCell, vbLf)
 
-    ActiveCell.Characters(Length:=N).Font.Size = FontSize2 '//SpinButton2.Value
-    TextBox2.Value = FontSize2 '//SpinButton2.Value
+    ActiveCell.Characters(Length:=N).Font.Size = FontSize2
+    TextBox2.Value = FontSize2
 
-    If FontSize2 > 18 Then '//=
+    If FontSize2 > 18 Then
         FontSize2 = 18
         ActiveCell.Characters(Length:=N).Font.Size = FontSize2
         TextBox2.Value = FontSize2
@@ -179,9 +168,10 @@ FontSize1 = FontSize1 - 1
 
 N = InStr(ActiveCell, vbLf)
 
-ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1 '//SpinButton1.Value, Start:=1 ,Length:=N省略
-TextBox1.Value = FontSize1 '// SpinButton1.Value
-If FontSize1 < 6 Then '// =
+ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
+TextBox1.Value = FontSize1
+
+If FontSize1 < 6 Then
     FontSize1 = 6
     ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
     TextBox1.Value = FontSize1
@@ -197,10 +187,10 @@ FontSize1 = FontSize1 + 1
 
 N = InStr(ActiveCell, vbLf)
 
-ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1 '//SpinButton1.Value
-TextBox1.Value = FontSize1 '//SpinButton1.Value
+ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
+TextBox1.Value = FontSize1
 
-If FontSize1 > 18 Then '//=
+If FontSize1 > 18 Then
     FontSize1 = 18
     ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1
     TextBox1.Value = FontSize1
@@ -208,5 +198,3 @@ If FontSize1 > 18 Then '//=
     Exit Sub
 End If
 End Sub
-
-
