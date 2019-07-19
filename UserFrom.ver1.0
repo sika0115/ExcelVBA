@@ -1,4 +1,3 @@
-'//変数宣言
 Dim Number As Boolean
 Dim Phonetic As Boolean
 Const SizeMax As Integer = 18
@@ -8,15 +7,19 @@ Dim FontType As String
 Dim FontSize2 As Integer
 Dim FontSize1 As Integer
 
+Private Sub TextBox2_Change()
+
+End Sub
 
 Private Sub UserForm_Initialize()
 '//フォントサイズの初期化
 FontSize2 = 12
 FontSize1 = 12
+
 End Sub
 
-
-Private Sub CheckBox1_Click()   
+Private Sub CheckBox1_Click()
+    
 If CheckBox1.Value = True Then
     If OptionButton1.Value = True Then
         Name = Worksheets("学生一覧").Cells(ComboBox1.ListIndex + 2, 3).Value & vbLf _
@@ -39,8 +42,8 @@ If Worksheets("学生一覧").Cells(ComboBox1.ListIndex + 2, 4) = "M" Then
 Else
     ActiveCell.Interior.ColorIndex = 38
 End If
-End Sub
 
+End Sub
 
 Private Sub ComboBox1_Change()
 Dim R As Integer
@@ -82,8 +85,8 @@ If Worksheets("学生一覧").Cells(ComboBox1.ListIndex + 2, 4) = "M" Then
 Else
     ActiveCell.Interior.ColorIndex = 38
 End If
+  
 End Sub
-
 
 Private Sub CommandButton2_Click()
     Unload UserForm
@@ -93,7 +96,6 @@ Private Sub CommandButton3_Click()
     ActiveCell.ClearContents
     ActiveCell.Interior.ColorIndex = 2
 End Sub
-
 
 '// かな氏名格納
 Private Sub OptionButton1_Click()
@@ -106,8 +108,8 @@ Else
 End If
 
 ActiveCell.Value = Name
-End Sub
 
+End Sub
 
 '//　かな氏名格納しない
 Private Sub OptionButton2_Click()
@@ -118,8 +120,8 @@ Else
     Name = ComboBox1.Value
 End If
     ActiveCell = Name
+    
 End Sub
-
 
 '// かな氏名
 Private Sub SpinButton2_SpinDown()
@@ -135,12 +137,13 @@ If OptionButton1.Value = True Then
     TextBox2.Value = FontSize2 '//SpinButton2.Value
 
     If FontSize2 < 6 Then '//=
+        FontSize2 = 6
+        TextBox2.Value = FontSize2
         MsgBox "これ以上小さくできません"
         Exit Sub
     End If
 End If
 End Sub
-
 
 Private Sub SpinButton2_SpinUp()
 Dim N As Long
@@ -154,14 +157,16 @@ If OptionButton1.Value = True Then
     TextBox2.Value = FontSize2 '//SpinButton2.Value
 
     If FontSize2 > 18 Then '//=
+        FontSize2 = 18
+        TextBox2.Value = FontSize2
         MsgBox "これ以上大きくできません"
         Exit Sub
     End If
 End If
 End Sub
 
-
 '//漢字番号
+
 Private Sub SpinButton1_SpinDown()
 Dim N As Long
 
@@ -172,6 +177,8 @@ N = InStr(ActiveCell, vbLf)
 ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1 '//SpinButton1.Value, Start:=1 ,Length:=N省略
 TextBox1.Value = FontSize1 '// SpinButton1.Value
 If FontSize1 < 6 Then '// =
+    FontSize1 = 6
+    TextBox1.Value = FontSize1
     MsgBox "これ以上小さくできません"
     Exit Sub
 End If
@@ -188,6 +195,8 @@ ActiveCell.Characters(Start:=N + 1).Font.Size = FontSize1 '//SpinButton1.Value
 TextBox1.Value = FontSize1 '//SpinButton1.Value
 
 If FontSize1 > 18 Then '//=
+    FontSize1 = 18
+    TextBox1.Value = FontSize1
     MsgBox "これ以上大きくできません"
     Exit Sub
 End If
